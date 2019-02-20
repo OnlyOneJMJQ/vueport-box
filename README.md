@@ -1,4 +1,4 @@
-# VuePort (Vue-uport)
+# VuePort Truffle Box
 ![banner](https://github.com/saga-foundation/vueport-box/blob/master/loading-banner.png)
 
 ## Installation

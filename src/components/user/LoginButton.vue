@@ -1,5 +1,5 @@
 <template>
-  <b-button @click="login" size="md" class="my-2 my-sm-0" type="submit">
+  <b-button :disabled="loading === true" @click="login" size="md" class="my-2 my-sm-0" type="submit">
     <img src="@/assets/uport-logo.svg" width="25" height="25" /> &nbsp;|&nbsp;
     <span v-if="loading === false">Log in with uport</span>
     <b-spinner variant="primary" v-if="loading === true" small />

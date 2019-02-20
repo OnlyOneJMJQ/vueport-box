@@ -16,10 +16,14 @@
             type="number"
             placeholder="Enter a number"
           />
-          <b-button class="mx-2" @click="set" variant="outline-primary"
-            >Set !
+          <b-button :disabled="loading.set===true" class="mx-2" @click="set" variant="outline-primary">
+            <span v-if="loading.set === false">Set Number</span>
+             <b-spinner variant="primary" v-else small />
           </b-button>
-          <b-button class="mx-2" @click="get" variant="primary">Get</b-button>
+          <b-button :disabled="loading.get===true" class="mx-2" @click="get" variant="primary">
+            <span v-if="loading.get === false">Get Number</span>
+             <b-spinner variant="primary" v-else small />
+            </b-button>
           <br />
           <p class="my-2"><strong>Current value: </strong> {{ getter }}</p>
         </div>
@@ -35,7 +39,11 @@ export default {
   data () {
     return {
       setter: null,
-      getter: 0
+      getter: 0,
+      loading: {
+        set: false,
+        get: false
+      }
     }
   },
   mounted () {
@@ -49,25 +57,39 @@ export default {
   methods: {
     async set () {
       try {
+        this.loading.set = true 
         await simpleStorage.set(this.setter, this.network)
+        this.$emit('alert', {
+          countdown: 5,
+          color: 'success',
+          message: `Number set to ${this.setter}`
+        })
+        await this.get()
+        this.setter = null
+        this.loading.set = false
       } catch (e) {
         this.$emit('alert', {
           countdown: 5,
           color: 'danger',
           message: e.message
         })
+        this.setter = null
+        this.loading.set = false 
         console.log(e)
       }
     },
     async get () {
       try {
+        this.loading.get = true 
         this.getter = (await simpleStorage.get(this.network)).toString(10)
+        this.loading.get = false
       } catch (e) {
         this.$emit('alert', {
           countdown: 5,
           color: 'danger',
           message: e.message
         })
+        this.loading.get = false
         console.log(e)
       }
     }

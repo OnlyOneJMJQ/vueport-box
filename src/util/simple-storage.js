@@ -2,7 +2,7 @@ import SimpleStorage from '../../build/contracts/SimpleStorage'
 import { providers, Contract } from 'ethers'
 import { Connect } from 'uport-connect'
 
-const isDeployed = chainId => SimpleStorage.networks[chainId] === undefined
+const isDeployed = chainId => SimpleStorage.networks[chainId] !== undefined
 
 const set = async (x, network) => {
   if (!isDeployed(network.id)) { throw new Error('Error: contract not deployed on selected network') }

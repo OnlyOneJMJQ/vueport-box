@@ -13,7 +13,7 @@ export default {
   name: 'network-selector',
   data () {
     return {
-      selected: 'rinkeby',
+      selected: { id: '4', rpcUrl: 'https://rinkeby.infura.io' },
       options: [
         {
           value: { id: '1', rpcUrl: 'https://mainnet.infura;io' },

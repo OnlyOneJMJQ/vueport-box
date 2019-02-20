@@ -35,7 +35,7 @@ export default {
   },
   mounted () {
     this.$root.$on('alert', ({ message, color, countdown }) => {
-      console.log("ALERT")
+      console.log('ALERT')
       this.color = color
       this.message = message
       this.dismissCountDown = countdown

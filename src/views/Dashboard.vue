@@ -57,7 +57,7 @@ export default {
   methods: {
     async set () {
       try {
-        this.loading.set = true 
+        this.loading.set = true
         await simpleStorage.set(this.setter, this.network)
         this.$emit('alert', {
           countdown: 5,
@@ -74,13 +74,13 @@ export default {
           message: e.message
         })
         this.setter = null
-        this.loading.set = false 
+        this.loading.set = false
         console.log(e)
       }
     },
     async get () {
       try {
-        this.loading.get = true 
+        this.loading.get = true
         this.getter = (await simpleStorage.get(this.network)).toString(10)
         this.loading.get = false
       } catch (e) {

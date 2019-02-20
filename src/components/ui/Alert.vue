@@ -1,5 +1,6 @@
 <template>
-    <b-alert
+    <div class="d-flex justify-content-center fixed-bottom mb-3">
+      <b-alert
       :show="dismissCountDown"
       dismissible
       :variant="color"
@@ -10,6 +11,7 @@
       <p>{{ message }} </p>
       <b-progress :variant="color" :max="dismissSecs" :value="dismissCountDown" height="4px" />
     </b-alert>
+      </div>
 </template>
 
 <script>
@@ -32,7 +34,8 @@ export default {
     }
   },
   mounted () {
-    this.$on('alert', ({ message, color, countdown }) => {
+    this.$root.$on('alert', ({ message, color, countdown }) => {
+      console.log("ALERT")
       this.color = color
       this.message = message
       this.dismissCountDown = countdown
@@ -43,7 +46,7 @@ export default {
 
 <style scoped>
 .alert {
-    position: absolute;
-    bottom: 20px;
+  min-width: 300px;
+  text-align:center;
 }
 </style>

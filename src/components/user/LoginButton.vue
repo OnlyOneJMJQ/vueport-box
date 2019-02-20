@@ -27,7 +27,7 @@ export default {
         this.loading = false
         this.$router.push('/profile')
       } catch (e) {
-        this.$emit('alert', {
+        this.$root.$emit('alert', {
           countdown: 5,
           color: 'danger',
           message: e.message

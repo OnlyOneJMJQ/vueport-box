@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-8 offset-lg-2">
+      <div class="col-12 col-lg-8 offset-lg-2 my-5">
         <h1>
           Contract Interaction
         </h1>
@@ -68,7 +68,7 @@ export default {
         this.setter = null
         this.loading.set = false
       } catch (e) {
-        this.$emit('alert', {
+        this.$root.$emit('alert', {
           countdown: 5,
           color: 'danger',
           message: e.message
@@ -84,7 +84,7 @@ export default {
         this.getter = (await simpleStorage.get(this.network)).toString(10)
         this.loading.get = false
       } catch (e) {
-        this.$emit('alert', {
+        this.$root.$emit('alert', {
           countdown: 5,
           color: 'danger',
           message: e.message

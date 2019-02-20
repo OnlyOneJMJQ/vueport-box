@@ -1,5 +1,14 @@
 # VuePort (Vue-uport)
 
+## Installation
+Install Truffle globally.
+
+`npm install -g truffle`
+
+Download the box. This also takes care of installing the necessary dependencies.
+
+`truffle unbox saga-foundation/vueport-box
+`
 ## Uport 
 This particular box comes with UPort authentication built-in using `uport-connect` 
 

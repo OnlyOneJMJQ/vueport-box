@@ -1,4 +1,5 @@
 # VuePort (Vue-uport)
+![banner](https://github.com/saga-foundation/vueport-box/blob/master/loading-banner.png)
 
 ## Installation
 Install Truffle globally.
